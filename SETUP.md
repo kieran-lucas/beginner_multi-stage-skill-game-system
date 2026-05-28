@@ -263,13 +263,13 @@ implementation of `IBlockable` is the one cross-namespace dependency.
 `EnemyAI` can damage the player with melee attacks and Crimson Slash. Extra
 test paths:
 
+- `F2` through `GameManager.enableDebugHotkeys` applies 25 damage to the player.
 - Inspector → Void Sorcerer → HealthSystem → ⋮ menu → _Debug/Apply 10 damage_
   (registered via `[ContextMenu]`).
 - Or from a temporary script: `gameManager.Player.GetComponent<HealthSystem>().TakeDamage(new DamageInfo(10, ..., ..., 0, null, true, AttackType.Light))`.
-- Knockback is applied via `Rigidbody.AddForce`. The player's
-  `PlayerController` writes velocity every FixedUpdate, so the player visibly
-  does not get pushed back yet — adding hitstun (locking movement for
-  `DamageInfo.hitstunDuration`) is the natural follow-up.
+- Knockback is applied via `Rigidbody.AddForce`. Player movement currently
+  favors responsiveness over long hitstun, so stronger hit reactions are a
+  recommended follow-up rather than part of this vertical slice.
 
 ### Enemy combat
 
