@@ -258,9 +258,10 @@ implementation of `IBlockable` is the one cross-namespace dependency.
 |                    | `OnBlocked`       | (DamageInfo, target) | Clang VFX, blue spark |
 |                    | `OnComboChanged`  | combo index | HUD combo counter |
 
-### Player taking damage (debug)
+### Player taking damage and debug damage
 
-The player has a HealthSystem but no AI attacks it yet. To test:
+`EnemyAI` can damage the player with melee attacks and Crimson Slash. Extra
+test paths:
 
 - Inspector → Void Sorcerer → HealthSystem → ⋮ menu → _Debug/Apply 10 damage_
   (registered via `[ContextMenu]`).
